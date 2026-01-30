@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overengineer — Admin Panels & Apps</title>
+    <meta name="description" content="Build beautiful admin panels and internal tools fast." />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#ecfeff",
+                100: "#cffafe",
+                200: "#a5f3fc",
+                300: "#67e8f9",
+                400: "#22d3ee",
+                500: "#06b6d4",
+                600: "#0891b2",
+                700: "#0e7490",
+                800: "#155e75",
+                900: "#164e63",
+                950: "#083344",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .bg-grid {
+        background-image: radial-gradient(rgba(148, 163, 184, 0.18) 1px, transparent 1px);
+        background-size: 22px 22px;
+        background-position: -8px -8px;
+      }
+
+      .glass {
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .code-font {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+
+      .shadow-soft {
+        box-shadow:
+          0 0 0 1px rgba(148, 163, 184, 0.12),
+          0 20px 50px rgba(0, 0, 0, 0.45);
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-brand-400/30 selection:text-slate-50">
+    <div class="relative">
+      <div class="pointer-events-none absolute inset-0 bg-grid opacity-35"></div>
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand-500/10 via-transparent to-transparent"></div>
+
+      <header class="sticky top-0 z-50 border-b border-slate-800/70 bg-slate-950/70 backdrop-blur">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+          <a href="/" class="flex items-center gap-2">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-300 to-brand-600 shadow-soft">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                <path d="M7 17V7l10 5-10 5Z" fill="rgba(15,23,42,0.95)" />
+              </svg>
+            </span>
+            <span class="text-sm font-semibold tracking-tight">Overengineer</span>
+          </a>
+
+          <nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex">
+            <a class="hover:text-white" href="/docs/">Docs</a>
+            <a class="hover:text-white" href="#features">Features</a>
+            <a class="hover:text-white" href="#pricing">Pricing</a>
+            <a class="hover:text-white" href="#showcase">Showcase</a>
+            <a class="inline-flex items-center rounded-lg bg-white px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100" href="/docs/">Get started</a>
+          </nav>
+
+          <button
+            id="menuButton"
+            class="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2 text-sm text-slate-200 hover:bg-slate-900 md:hidden"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+          >
+            Menu
+          </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden border-t border-slate-800/70 bg-slate-950/80 md:hidden">
+          <div class="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+            <div class="grid gap-3 text-sm text-slate-200">
+              <a class="hover:text-white" href="/docs/">Docs</a>
+              <a class="hover:text-white" href="#features">Features</a>
+              <a class="hover:text-white" href="#pricing">Pricing</a>
+              <a class="hover:text-white" href="#showcase">Showcase</a>
+              <a class="mt-2 inline-flex items-center justify-center rounded-lg bg-white px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100" href="/docs/">Get started</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="relative">
+          <div class="mx-auto max-w-6xl px-4 pt-14 pb-14 sm:px-6 sm:pt-20">
+            <div class="grid items-center gap-10 lg:grid-cols-2">
+              <div>
+                <div class="inline-flex items-center gap-2 rounded-full border border-slate-800/70 bg-slate-900/30 px-3 py-1 text-xs text-slate-200">
+                  <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+                  <span>Ship admin panels that feel premium</span>
+                </div>
+
+                <h1 class="mt-5 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+                  The UI kit for
+                  <span class="bg-gradient-to-r from-brand-300 via-brand-200 to-white bg-clip-text text-transparent">modern internal tools</span>
+                </h1>
+
+                <p class="mt-4 max-w-xl text-base leading-relaxed text-slate-200">
+                  Overengineer helps you build fast, consistent, and beautiful dashboards with sensible defaults—while keeping full control over your code.
+                </p>
+
+                <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <a href="/docs/" class="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100">
+                    Read the docs
+                  </a>
+                  <a href="#showcase" class="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/30 px-5 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-900/50">
+                    View examples
+                  </a>
+                </div>
+
+                <div class="mt-8 grid max-w-xl grid-cols-3 gap-4">
+                  <div class="glass rounded-xl p-4">
+                    <div class="text-sm font-semibold">Composable</div>
+                    <div class="mt-1 text-xs text-slate-300">Pages, widgets, actions.</div>
+                  </div>
+                  <div class="glass rounded-xl p-4">
+                    <div class="text-sm font-semibold">Fast</div>
+                    <div class="mt-1 text-xs text-slate-300">Great defaults, low churn.</div>
+                  </div>
+                  <div class="glass rounded-xl p-4">
+                    <div class="text-sm font-semibold">Polished</div>
+                    <div class="mt-1 text-xs text-slate-300">Spacing, type, motion.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div class="absolute -inset-6 rounded-3xl bg-gradient-to-br from-brand-400/20 via-transparent to-white/5 blur-2xl"></div>
+
+                <div class="relative rounded-2xl bg-slate-900/40 p-4 shadow-soft">
+                  <div class="flex items-center justify-between border-b border-slate-800/70 pb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="h-2.5 w-2.5 rounded-full bg-rose-400"></span>
+                      <span class="h-2.5 w-2.5 rounded-full bg-amber-300"></span>
+                      <span class="h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+                    </div>
+                    <div class="text-xs text-slate-300">resources/UserResource</div>
+                  </div>
+
+                  <div class="mt-4 grid gap-3">
+                    <div class="glass rounded-xl p-4">
+                      <div class="flex items-start justify-between gap-3">
+                        <div>
+                          <div class="text-sm font-semibold">Users</div>
+                          <div class="mt-1 text-xs text-slate-300">Search, filter, and act on records</div>
+                        </div>
+                        <div class="inline-flex items-center rounded-lg bg-brand-500/15 px-2 py-1 text-xs text-brand-200">Live</div>
+                      </div>
+                      <div class="mt-4 grid grid-cols-3 gap-3 text-xs">
+                        <div class="rounded-lg bg-slate-950/30 p-3">
+                          <div class="text-slate-300">Active</div>
+                          <div class="mt-1 text-lg font-semibold text-white">1,248</div>
+                        </div>
+                        <div class="rounded-lg bg-slate-950/30 p-3">
+                          <div class="text-slate-300">Pending</div>
+                          <div class="mt-1 text-lg font-semibold text-white">86</div>
+                        </div>
+                        <div class="rounded-lg bg-slate-950/30 p-3">
+                          <div class="text-slate-300">Banned</div>
+                          <div class="mt-1 text-lg font-semibold text-white">12</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-4">
+                      <div class="text-xs text-slate-300">Example</div>
+                      <pre class="code-font mt-2 overflow-x-auto rounded-lg bg-slate-950/40 p-4 text-xs leading-relaxed text-slate-200"><code>Resource::make('User')
+  -&gt;table([
+    Column::text('name'),
+    Column::text('email'),
+    Column::badge('status'),
+  ])
+  -&gt;actions([
+    Action::edit(),
+    Action::impersonate(),
+  ]);</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" class="border-t border-slate-800/70">
+          <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+            <div class="max-w-2xl">
+              <h2 class="text-2xl font-semibold tracking-tight">Everything you need, nothing you don’t</h2>
+              <p class="mt-3 text-sm leading-relaxed text-slate-200">
+                A solid base that’s easy to extend. Built for teams that want to move quickly without shipping ugly dashboards.
+              </p>
+            </div>
+
+            <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="glass rounded-2xl p-6">
+                <div class="text-sm font-semibold">Resources</div>
+                <div class="mt-2 text-sm text-slate-200">CRUD screens with search, filters, bulk actions, and permissions.</div>
+              </div>
+              <div class="glass rounded-2xl p-6">
+                <div class="text-sm font-semibold">Forms</div>
+                <div class="mt-2 text-sm text-slate-200">Clean components with validation, conditional logic, and great spacing.</div>
+              </div>
+              <div class="glass rounded-2xl p-6">
+                <div class="text-sm font-semibold">Tables</div>
+                <div class="mt-2 text-sm text-slate-200">Sorting, pagination, inline actions, and delightful empty states.</div>
+              </div>
+              <div class="glass rounded-2xl p-6">
+                <div class="text-sm font-semibold">Widgets</div>
+                <div class="mt-2 text-sm text-slate-200">Dashboards with KPIs, charts placeholders, and consistent panels.</div>
+              </div>
+              <div class="glass rounded-2xl p-6">
+                <div class="text-sm font-semibold">Theming</div>
+                <div class="mt-2 text-sm text-slate-200">A modern, dark-first palette that still prints cleanly in light modes.</div>
+              </div>
+              <div class="glass rounded-2xl p-6">
+                <div class="text-sm font-semibold">Extensible</div>
+                <div class="mt-2 text-sm text-slate-200">Override components, add plugins, and keep your own architecture.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="showcase" class="border-t border-slate-800/70">
+          <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+            <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+              <div>
+                <h2 class="text-2xl font-semibold tracking-tight">Designed for clarity</h2>
+                <p class="mt-3 text-sm leading-relaxed text-slate-200">
+                  A layout that makes your product feel stable: predictable spacing, crisp typography, and panels that don’t fight for attention.
+                </p>
+
+                <div class="mt-8 grid gap-4">
+                  <div class="glass rounded-2xl p-6">
+                    <div class="text-sm font-semibold">Navigation that scales</div>
+                    <div class="mt-2 text-sm text-slate-200">Sidebars, topbars, breadcrumbs, and contextual actions.</div>
+                  </div>
+                  <div class="glass rounded-2xl p-6">
+                    <div class="text-sm font-semibold">Accessible by default</div>
+                    <div class="mt-2 text-sm text-slate-200">High contrast, focus states, and sensible component semantics.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div class="absolute -inset-6 rounded-3xl bg-gradient-to-br from-brand-400/20 via-transparent to-white/10 blur-2xl"></div>
+                <div class="relative overflow-hidden rounded-2xl border border-slate-800/70 bg-slate-900/40 shadow-soft">
+                  <div class="flex items-center justify-between border-b border-slate-800/70 px-5 py-3">
+                    <div class="text-xs text-slate-300">Dashboard preview</div>
+                    <div class="inline-flex items-center gap-2 text-xs text-slate-300">
+                      <span class="h-2 w-2 rounded-full bg-brand-300"></span>
+                      <span>v1.0</span>
+                    </div>
+                  </div>
+
+                  <div class="p-5">
+                    <div class="grid gap-4 sm:grid-cols-3">
+                      <div class="rounded-xl bg-slate-950/30 p-4">
+                        <div class="text-xs text-slate-300">Revenue</div>
+                        <div class="mt-2 text-xl font-semibold">$84,291</div>
+                        <div class="mt-1 text-xs text-emerald-300">+12.4%</div>
+                      </div>
+                      <div class="rounded-xl bg-slate-950/30 p-4">
+                        <div class="text-xs text-slate-300">Orders</div>
+                        <div class="mt-2 text-xl font-semibold">2,731</div>
+                        <div class="mt-1 text-xs text-emerald-300">+4.1%</div>
+                      </div>
+                      <div class="rounded-xl bg-slate-950/30 p-4">
+                        <div class="text-xs text-slate-300">Support</div>
+                        <div class="mt-2 text-xl font-semibold">32</div>
+                        <div class="mt-1 text-xs text-amber-300">needs triage</div>
+                      </div>
+                    </div>
+
+                    <div class="mt-4 rounded-xl bg-slate-950/30 p-4">
+                      <div class="flex items-center justify-between">
+                        <div>
+                          <div class="text-sm font-semibold">Recent activity</div>
+                          <div class="mt-1 text-xs text-slate-300">A tidy feed with consistent spacing.</div>
+                        </div>
+                        <div class="rounded-lg bg-brand-500/15 px-2 py-1 text-xs text-brand-200">New</div>
+                      </div>
+
+                      <div class="mt-4 grid gap-3">
+                        <div class="flex items-center justify-between rounded-lg bg-slate-900/40 px-3 py-2">
+                          <div class="text-xs text-slate-200">Order #18521 updated</div>
+                          <div class="text-xs text-slate-400">2m</div>
+                        </div>
+                        <div class="flex items-center justify-between rounded-lg bg-slate-900/40 px-3 py-2">
+                          <div class="text-xs text-slate-200">New user signed up</div>
+                          <div class="text-xs text-slate-400">14m</div>
+                        </div>
+                        <div class="flex items-center justify-between rounded-lg bg-slate-900/40 px-3 py-2">
+                          <div class="text-xs text-slate-200">Weekly report generated</div>
+                          <div class="text-xs text-slate-400">1h</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" class="border-t border-slate-800/70">
+          <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+            <div class="max-w-2xl">
+              <h2 class="text-2xl font-semibold tracking-tight">Simple pricing</h2>
+              <p class="mt-3 text-sm leading-relaxed text-slate-200">Pick a plan and start shipping. Swap this out for your real billing later.</p>
+            </div>
+
+            <div class="mt-10 grid gap-4 lg:grid-cols-3">
+              <div class="glass rounded-2xl p-6">
+                <div class="text-sm font-semibold">Starter</div>
+                <div class="mt-2 text-3xl font-semibold">$0</div>
+                <div class="mt-2 text-sm text-slate-200">Prototype and validate.</div>
+                <a href="/docs/" class="mt-6 inline-flex w-full items-center justify-center rounded-lg border border-slate-800 bg-slate-900/30 px-4 py-2.5 text-sm font-semibold hover:bg-slate-900/50">Get started</a>
+              </div>
+
+              <div class="relative overflow-hidden rounded-2xl border border-brand-400/30 bg-gradient-to-b from-brand-500/15 via-slate-900/40 to-slate-900/40 p-6 shadow-soft">
+                <div class="absolute right-4 top-4 rounded-full bg-brand-500/15 px-3 py-1 text-xs text-brand-200">Popular</div>
+                <div class="text-sm font-semibold">Team</div>
+                <div class="mt-2 text-3xl font-semibold">$19</div>
+                <div class="mt-2 text-sm text-slate-200">For small teams building internal tools.</div>
+                <a href="/docs/" class="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 hover:bg-slate-100">Start building</a>
+              </div>
+
+              <div class="glass rounded-2xl p-6">
+                <div class="text-sm font-semibold">Enterprise</div>
+                <div class="mt-2 text-3xl font-semibold">Custom</div>
+                <div class="mt-2 text-sm text-slate-200">SSO, SLAs, and compliance support.</div>
+                <a href="#" class="mt-6 inline-flex w-full items-center justify-center rounded-lg border border-slate-800 bg-slate-900/30 px-4 py-2.5 text-sm font-semibold hover:bg-slate-900/50">Contact sales</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="border-t border-slate-800/70">
+          <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+            <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+              <div>
+                <h2 class="text-2xl font-semibold tracking-tight">Build your next dashboard today</h2>
+                <p class="mt-3 text-sm leading-relaxed text-slate-200">Use this template as-is or tell me what stack you prefer (Next.js, Laravel, Astro) and I’ll adapt it.</p>
+              </div>
+              <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                <a href="/docs/" class="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100">Open docs</a>
+                <a href="#features" class="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/30 px-5 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-900/50">Explore features</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-slate-800/70">
+        <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-300 to-brand-600 shadow-soft"></span>
+                <span class="text-sm font-semibold">Overengineer</span>
+              </div>
+              <div class="mt-3 text-sm text-slate-300">A Filament-inspired landing + docs starter.</div>
+            </div>
+            <div class="text-sm">
+              <div class="font-semibold">Product</div>
+              <div class="mt-3 grid gap-2 text-slate-300">
+                <a class="hover:text-white" href="#features">Features</a>
+                <a class="hover:text-white" href="#pricing">Pricing</a>
+                <a class="hover:text-white" href="#showcase">Showcase</a>
+              </div>
+            </div>
+            <div class="text-sm">
+              <div class="font-semibold">Docs</div>
+              <div class="mt-3 grid gap-2 text-slate-300">
+                <a class="hover:text-white" href="/docs/">Getting started</a>
+                <a class="hover:text-white" href="/docs/#installation">Installation</a>
+                <a class="hover:text-white" href="/docs/#resources">Resources</a>
+              </div>
+            </div>
+            <div class="text-sm">
+              <div class="font-semibold">Community</div>
+              <div class="mt-3 grid gap-2 text-slate-300">
+                <a class="hover:text-white" href="#">GitHub</a>
+                <a class="hover:text-white" href="#">Discord</a>
+                <a class="hover:text-white" href="#">X</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 flex flex-col gap-2 border-t border-slate-800/70 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+            <div>© <span id="year"></span> Overengineer. All rights reserved.</div>
+            <div class="text-slate-500">Built with Tailwind CDN.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const btn = document.getElementById("menuButton");
+      const menu = document.getElementById("mobileMenu");
+
+      if (btn && menu) {
+        btn.addEventListener("click", () => {
+          const isOpen = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", String(!isOpen));
+          menu.classList.toggle("hidden");
+        });
+      }
+
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>

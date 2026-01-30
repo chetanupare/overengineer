@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+.markdown {
+    @apply text-slate-200 leading-relaxed;
+}
+
+.markdown h1 {
+    @apply text-2xl sm:text-3xl font-semibold tracking-tight text-slate-50;
+}
+
+.markdown h2 {
+    @apply mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-50;
+}
+
+.markdown h3 {
+    @apply mt-6 text-lg font-semibold tracking-tight text-slate-50;
+}
+
+.markdown p {
+    @apply mt-4;
+}
+
+.markdown a {
+    @apply text-cyan-200 hover:text-white;
+}
+
+.markdown ul {
+    @apply mt-4 list-disc pl-6;
+}
+
+.markdown ol {
+    @apply mt-4 list-decimal pl-6;
+}
+
+.markdown li {
+    @apply mt-2;
+}
+
+.markdown blockquote {
+    @apply mt-6 border-l border-slate-700 pl-4 text-slate-300;
+}
+
+.markdown code {
+    @apply rounded bg-slate-950/40 px-1.5 py-0.5 text-slate-100;
+}
+
+.markdown pre {
+    @apply mt-5 overflow-x-auto rounded-xl bg-slate-950/40 p-4 text-xs sm:text-sm;
+}
+
+.markdown pre code {
+    @apply bg-transparent p-0;
+}
+
+.markdown--light {
+    @apply text-slate-700;
+}
+
+.markdown--light h1,
+.markdown--light h2,
+.markdown--light h3 {
+    @apply text-slate-950;
+}
+
+.markdown--light a {
+    @apply text-cyan-700 hover:text-slate-950;
+}
+
+.markdown--light blockquote {
+    @apply border-l border-black/10 text-slate-600;
+}
+
+.markdown--light code {
+    @apply bg-black/5 text-slate-900;
+}
+
+.markdown--light pre {
+    @apply bg-slate-950 text-slate-100;
+}
+
+@keyframes blob-float-a {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(0, -14px, 0) scale(1.03);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+@keyframes blob-float-b {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(12px, 10px, 0) scale(1.02);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+@keyframes blob-float-c {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(-10px, 12px, 0) scale(1.04);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+.blob-float-1,
+.blob-float-2,
+.blob-float-3 {
+    will-change: transform;
+}
+
+.blob-float-1 {
+    animation: blob-float-a 18s ease-in-out infinite;
+}
+
+.blob-float-2 {
+    animation: blob-float-b 22s ease-in-out infinite;
+}
+
+.blob-float-3 {
+    animation: blob-float-c 26s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .blob-float-1,
+    .blob-float-2,
+    .blob-float-3 {
+        animation: none !important;
+        transform: none !important;
+    }
+}
