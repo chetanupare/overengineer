@@ -1,0 +1,21 @@
+services:
+  # Laravel Web Service
+  - type: web
+    name: overengineer
+    env: php
+    plan: free
+    buildCommand: "composer install && npm install && npm run build"
+    startCommand: "php artisan serve --host=0.0.0.0 --port=$PORT"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_URL
+        value: https://overengineer.onrender.com
+      - key: VIEW_COMPILED_PATH
+        value: /app/storage/framework/views
+    phpVersion: 8.2
+    documentRoot: /site/public
